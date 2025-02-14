@@ -8,11 +8,20 @@ import "bootstrap"
 // index.css'
 import '../styles/index.css'
 
-// components
-import Home from './components/Home';
+// component
+import SecondsCounter from "./components/SecondsCounter.jsx";
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <Home/>
-  </React.StrictMode>,
-)
+let counter = 0;
+const root = ReactDOM.createRoot(document.getElementById('root'));
+
+setInterval(() => {
+    const four = Math.floor(counter / 1000) % 10;
+    const three = Math.floor(counter / 100) % 10;
+    const two = Math.floor(counter / 10) % 10;
+    const one = Math.floor(counter / 1) % 10;
+    counter++;
+    
+    root.render(
+        <SecondsCounter digitOne={one} digitTwo={two} digitThree={three} digitFour={four} />
+    );
+}, 1000);
